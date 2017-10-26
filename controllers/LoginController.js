@@ -27,7 +27,7 @@ module.exports = {
                                 logger.debug('[Login Controller]', 'E-mail de boas-vindas enviado com sucesso.', result);
                                 logger.debug('[Login Controller]', 'Gerar arquivo de tags...');
                                 require('../lib/generateTags.js')(newCompany._id)
-                                res.status(200).json({
+                                res.status(201).json({
                                     success: true,
                                     msg: "Empresa cadastrado com sucesso!"
                                 }); //retorna o usuário criado
@@ -35,7 +35,7 @@ module.exports = {
                     })
                     .catch((err) => { //Algum erro durante a criaçãos
                         logger.error('[Login Controller]', 'Erro ao cadastrar Empresa', err.errmsg);
-                        res.status(500).json({
+                        res.status(202).json({
                             success: false,
                             msg: "Erro ao cadastrar nova empresa. Tente novamente!",
                             err: err.errmsg
